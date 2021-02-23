@@ -8,7 +8,7 @@ Include the following in `Cargo.toml` under the dependencies section:
 
 ```
 mobc = "0.7.0"
-mobc-boltrs = "0.1.0"
+mobc-boltrs = "0.1.2"
 ```
 
 Then, in the project's source code, include something like the following:
