@@ -35,4 +35,4 @@ Contributions are very welcome. See the [contribution guidelines for this projec
 
 This project is available under the MIT license. See the [license file](./LICENSE.md) for the full text of the license.
 
-This project reuses a substantial portion of the source code in [Luc Street](https://github.com/lucis-fluxum)'s (bb8-bolt)[https://github.com/lucis-fluxum/bolt-rs/tree/master/bb8-bolt] crate. See the [license file](./LICENSE.md) for the MIT license statement related to the code reuse.
+This project reuses a substantial portion of the source code in [Luc Street](https://github.com/lucis-fluxum)'s [bb8-bolt](https://github.com/lucis-fluxum/bolt-rs/tree/master/bb8-bolt) crate. See the [license file](./LICENSE.md) for the MIT license statement related to the code reuse.
