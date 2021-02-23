@@ -1,0 +1,70 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '.github/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      BOLT_ADDR: 127.0.0.1:7687
+      BOLT_USER: neo4j
+      BOLT_PASS: my-test-password
+      RUST_BACKTRACE: full
+      
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cargo version
+        run: cargo version
+      
+      - name: Cache cargo registry
+        uses: actions/cache@v1
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo index
+        uses: actions/cache@v1
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo build
+        uses: actions/cache@v1
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+    
+      - name: Cache cargo audit
+        uses: actions/cache@v1
+        with:
+          path: rustbins
+          key: cargo-audit
+ 
+      - name: Check Build
+        run: cargo check
+      
+      - name: Install Clippy
+        run: rustup component add clippy
+
+      - name: Run Linter
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Start neo4j database
+        run: docker run --rm -d --name neo4j -e NEO4J_AUTH="neo4j/testpass" -p 7474:7474 -p 7687:7687 neo4j:4.1
+
+      - name: Run Tests
+        run: cargo test
+
+      - name: Stop neo4j database
+        run: docker rm -f neo4j
