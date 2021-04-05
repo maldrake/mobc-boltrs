@@ -29,7 +29,7 @@ pub enum Error {
     InvalidMetadata { metadata: String },
 
     /// Wraps and returns an error from the underlying I/O libraries
-    IOError { source: std::io::Error },
+    IoError { source: std::io::Error },
 
     /// Wraps and returns a Bolt protocol error
     ProtocolError { source: bolt_proto::error::Error },
@@ -53,7 +53,7 @@ impl Display for Error {
             Error::InvalidMetadata { metadata } => {
                 write!(f, "Invalid metadata: {}", metadata)
             }
-            Error::IOError { source } => {
+            Error::IoError { source } => {
                 write!(f, "IO Error. Source error: {}", source)
             }
             Error::ProtocolError { source } => {
@@ -71,7 +71,7 @@ impl std::error::Error for Error {
             Error::InvalidAddress => None,
             Error::InvalidClientVersion { version: _ } => None,
             Error::InvalidMetadata { metadata: _ } => None,
-            Error::IOError { source } => Some(source),
+            Error::IoError { source } => Some(source),
             Error::ProtocolError { source } => Some(source),
         }
     }
@@ -91,6 +91,6 @@ impl From<bolt_proto::error::Error> for Error {
 
 impl From<std::io::Error> for Error {
     fn from(e: std::io::Error) -> Self {
-        Error::IOError { source: e }
+        Error::IoError { source: e }
     }
 }

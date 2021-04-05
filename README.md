@@ -7,8 +7,8 @@ The `mobc-boltrs` crate provides an adapter from the `bolt-client` Neo4J client 
 Include the following in `Cargo.toml` under the dependencies section:
 
 ```
-mobc = "0.7.0"
-mobc-boltrs = "0.1.2"
+mobc = "0.7.2"
+mobc-boltrs = "0.2.0"
 ```
 
 Then, in the project's source code, include something like the following:
