@@ -1,6 +1,6 @@
 # mobc-boltrs
 
-This crate has been deprecated in favor of [mobc-bolt](https://crates.io/crates/mobc-bolt). It is no longer being maintained.
+This crate is no longer being maintained.  The mobc-boltrs crate is deprecated in favor of [mobc-bolt](https://crates.io/crates/mobc-bolt).
 
 The remainder of the README file is preserved below, for historical purposes, but this crate should no longer be used.
 
@@ -10,7 +10,7 @@ Include the following in `Cargo.toml` under the dependencies section:
 
 ```
 mobc = "0.7.2"
-mobc-boltrs = "0.2.0"
+mobc-boltrs = "0.2.2"
 ```
 
 Then, in the project's source code, include something like the following:
