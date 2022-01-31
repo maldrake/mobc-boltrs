@@ -1,6 +1,8 @@
 # mobc-boltrs
 
-The `mobc-boltrs` crate provides an adapter from the `bolt-client` Neo4J client to the the `mobc` connection pool.
+This crate has been deprecated in favor of [mobc-bolt](https://crates.io/crates/mobc-bolt). It is no longer being maintained.
+
+The remainder of the README file is preserved below, for historical purposes, but this crate should no longer be used.
 
 # Usage
 
